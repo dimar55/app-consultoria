@@ -1,7 +1,7 @@
 <template>
   <div class="ctn_login">
     <div class="logo">
-            <img src="../assets/consultoria(1).png" alt="">
+            <img src="../assets/consultoria.png" alt="">
         </div>
     <FormLogin></FormLogin>
   </div>
@@ -30,8 +30,8 @@
 }
 
 .logo{
-  margin-right: 5%;
-  margin-left: 5%;
+  margin-right: 8%;
+  margin-left: 8%;
 }
 
   
