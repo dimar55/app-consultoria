@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Menu from '../views/Menu.vue'
+import CrearPrograma from '../views/CrearPrograma.vue'
+import CrearDocumento from '../views/CrearDocumento.vue'
 import axios from "axios";
 const routes = [
   {
@@ -14,6 +16,20 @@ const routes = [
     name: 'Menu',
     component: Menu
   },
+
+  {
+    path: '/CrearPrograma',
+    name: 'CrearPrograma',
+    component: CrearPrograma
+  },
+
+  {
+    path: '/CrearDocumento',
+    name: 'CrearDocumento',
+    component: CrearDocumento
+  },
+
+
 ]
 
 const router = createRouter({
