@@ -1,31 +1,70 @@
 <template>
     <div class="ctn-crear">
-        <div class="form_crear">
+        <form class="form_crear" v-on:submit.prevent="crearDocumento">
             <h1> CREAR PROGRAMA</h1>
             <div class="campos_crear">
                 <p>NOMBRE:</p>
-                <input type="text">
+                <input type="text" v-model="programa.Nombre_pg">
                 <p>DESCRIPCIÓN:</p>
-                <textarea name="" id="" cols="30" rows="10" class="descrip"></textarea>
-
+                <textarea name="" id="" cols="30" rows="10" class="descrip" v-model="programa.Descripcion_pg"></textarea>
             </div>
-
-            <button class="boton">REGISTRAR</button>
-        </div>
+            <button class="boton" type="submit">REGISTRAR</button>
+        </form>
     </div>
 
-    
+
 </template>
 
 <script>
-    export default{
-            name: 'FormPrograma'
-        } 
+import axios from "axios";
+import Swal from "sweetalert2";
+export default {
+    name: 'FormPrograma',
+    data() {
+        return {
+            programa: {
+                Nombre_pg: "",
+                Descripcion_pg: ""
+            }
+        }
+    },
+    methods: {
+        crearDocumento() {
+            axios.post("http://localhost:3000/pg/", this.programa)
+                .then((result) => {
+                    if (result.data.success) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Programa registrado",
+                            showConfirmButton: false,
+                            timer: 1000,
+                        });
+                        this.$router.push({ path: '/Menu' });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "No se ha podido registrar el programa",
+                            showConfirmButton: false,
+                            timer: 1200,
+                        });
+                    }
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "No se ha podido registrar el programa",
+                        showConfirmButton: false,
+                        timer: 1200,
+                    });
+                });
+        }
+    }
+} 
 </script>
 
 
 <style>
-.ctn-crear{
+.ctn-crear {
     margin: auto;
     margin-top: 100px;
     width: 600px;
@@ -46,7 +85,7 @@
 
 }
 
-.ctn-crear p{
+.ctn-crear p {
     text-align: start;
     margin-left: 45px;
     margin-top: 40px;
@@ -56,7 +95,7 @@
 
 
 
-.campos_crear input{
+.campos_crear input {
     width: 430px;
     height: 60px;
     border-radius: 25px;
@@ -69,7 +108,7 @@
 
 }
 
-.descrip{
+.descrip {
     border: none;
     width: 430px;
     height: 200px;
@@ -80,9 +119,4 @@
     margin-bottom: 20px;
     padding: 10px;
 }
-
-
-
-
-
 </style>
