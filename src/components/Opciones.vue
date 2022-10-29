@@ -3,7 +3,7 @@
             <div class="ctn_opciones">
                 <h1>REGISTRO DE USUARIO</h1>
                 <img src="../assets/perfil.png" alt="">
-                <button class="boton">REGISTRAR</button>
+                <button class="boton" @click="go_RegistrarUsuario">REGISTRAR</button>
             </div>
             <div class="ctn_opciones">
                 <h1>REGISTRO DE EMPRESA</h1>
@@ -56,6 +56,9 @@
         },
         go_AjustarFechas(){
             this.$router.push({ path: '/AjustarFecha' });
+        },
+        go_RegistrarUsuario(){
+            this.$router.push({ path: '/RegistrarUsuario' });
         }
 
 
