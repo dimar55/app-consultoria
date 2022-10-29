@@ -25,7 +25,7 @@
             <div class="ctn_opciones">
                 <h1>AJUSTAR FECHAS</h1>
                 <img src="../assets/calendario.png" alt="">
-                <button class="boton">AJUSTAR</button>
+                <button class="boton" @click="go_AjustarFechas">AJUSTAR</button>
             </div>
 
             <div class="ctn_opciones">
@@ -53,6 +53,9 @@
 
         go_crearPrograma(){
             this.$router.push({ path: '/CrearPrograma' });
+        },
+        go_AjustarFechas(){
+            this.$router.push({ path: '/AjustarFecha' });
         }
 
 

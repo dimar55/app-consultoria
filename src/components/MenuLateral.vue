@@ -26,7 +26,7 @@
                     <a>Registrar Empresa</a>
                     <a>Registrar Proceso</a>
                     <a>Ver Proceso</a>
-                    <a>Ajustar Fechas</a>
+                    <a  @click="go_AjustarFechas">Ajustar Fechas</a>
                     <a  @click="go_crearDocumento">Crear Documento</a>
                     <a  @click="go_crearPrograma">Crear Programa</a>
                 </nav>
@@ -51,6 +51,9 @@
         },
         go_Menu(){
             this.$router.push({ path: '/Menu' });
+        },
+        go_AjustarFechas(){
+            this.$router.push({ path: '/AjustarFecha' });
         }
     } 
     }
