@@ -4,6 +4,7 @@ import Menu from '../views/Menu.vue'
 import CrearPrograma from '../views/CrearPrograma.vue'
 import CrearDocumento from '../views/CrearDocumento.vue'
 import AjustarFecha from '../views/AjustarFecha.vue'
+import RegistrarUsuario from '../views/RegistrarUsuario.vue'
 import axios from "axios";
 const routes = [
   {
@@ -33,6 +34,12 @@ const routes = [
     path: '/AjustarFecha',
     name: 'AjustarFecha',
     component: AjustarFecha
+  },
+
+  {
+    path: '/RegistrarUsuario',
+    name: 'RegistrarUsuario',
+    component: RegistrarUsuario
   },
 
 
