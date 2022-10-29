@@ -3,6 +3,7 @@ import Login from '../views/Login.vue'
 import Menu from '../views/Menu.vue'
 import CrearPrograma from '../views/CrearPrograma.vue'
 import CrearDocumento from '../views/CrearDocumento.vue'
+import AjustarFecha from '../views/AjustarFecha.vue'
 import axios from "axios";
 const routes = [
   {
@@ -27,6 +28,11 @@ const routes = [
     path: '/CrearDocumento',
     name: 'CrearDocumento',
     component: CrearDocumento
+  },
+  {
+    path: '/AjustarFecha',
+    name: 'AjustarFecha',
+    component: AjustarFecha
   },
 
 
