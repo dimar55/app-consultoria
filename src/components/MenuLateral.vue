@@ -23,7 +23,7 @@
                 <nav>
                     <a  @click="go_Menu">Menu principal</a>
                     <a  @click="go_RegistrarUsuario">Registrar Usuario</a>
-                    <a>Registrar Empresa</a>
+                    <a  @click="go_RegistrarEmpresa">Registrar Empresa</a>
                     <a>Registrar Proceso</a>
                     <a>Ver Proceso</a>
                     <a  @click="go_AjustarFechas">Ajustar Fechas</a>
@@ -57,6 +57,9 @@
         },
         go_RegistrarUsuario(){
             this.$router.push({ path: '/RegistrarUsuario' });
+        },
+        go_RegistrarEmpresa(){
+            this.$router.push({ path: '/RegistrarEmpresa' });
         }
     } 
     }

@@ -8,7 +8,7 @@
             <div class="ctn_opciones">
                 <h1>REGISTRO DE EMPRESA</h1>
                 <img src="../assets/rascacielos.png" alt="">
-                <button class="boton" >REGISTRAR</button>
+                <button class="boton" @click="go_RegistrarEmpresa">REGISTRAR</button>
             </div>
             <div class="ctn_opciones">
                 <h1>REGISTRO DE PROCESO</h1>
@@ -59,6 +59,9 @@
         },
         go_RegistrarUsuario(){
             this.$router.push({ path: '/RegistrarUsuario' });
+        },
+        go_RegistrarEmpresa(){
+            this.$router.push({ path: '/RegistrarEmpresa' });
         }
        
 

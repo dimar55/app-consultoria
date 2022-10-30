@@ -1,6 +1,7 @@
 <template>
     <Header></Header>
     <MenuLateral></MenuLateral>
+    <FormEmpresa></FormEmpresa>
     <Footer></Footer>
  </template>
  

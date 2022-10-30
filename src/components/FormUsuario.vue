@@ -17,7 +17,6 @@
                 <select v-model="user.Tdocumento_td">
                     <option v-for="documento in documentos">{{ documento.Tdocumento_td }}</option>
                 </select>
-
             </div>
             <div class="campos_usu">
                 <p>NUMERO DE DOCUMENTO:</p>
