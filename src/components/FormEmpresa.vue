@@ -98,7 +98,7 @@ export default {
             this.showModal = modal;
         },
         buscarUsuario() {
-            axios.get("http://localhost:3000/user/" + this.empresa.Codigo_usu)
+            axios.get("http://localhost:3000/user/tipo/" + this.empresa.Codigo_usu)
             .then((result)=>{
                 this.Nombre_usu = result.data.success ? result.data.body[0].Nombre_usu : "Usuario no existe"
             }).catch((err)=>{

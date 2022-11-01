@@ -13,7 +13,7 @@
             <div class="ctn_opciones">
                 <h1>REGISTRO DE PROCESO</h1>
                 <img src="../assets/ley.png" alt="">
-                <button class="boton">REGISTRAR</button>
+                <button class="boton" @click="go_RegistrarProceso">REGISTRAR</button>
             </div>
 
             <div class="ctn_opciones">
@@ -62,6 +62,9 @@
         },
         go_RegistrarEmpresa(){
             this.$router.push({ path: '/RegistrarEmpresa' });
+        },
+        go_RegistrarProceso(){
+            this.$router.push({ path: '/IniciarProceso' });
         }
        
 
