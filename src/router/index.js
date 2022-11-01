@@ -6,6 +6,7 @@ import CrearDocumento from '../views/CrearDocumento.vue'
 import AjustarFecha from '../views/AjustarFecha.vue'
 import RegistrarUsuario from '../views/RegistrarUsuario.vue'
 import RegistrarEmpresa from '../views/RegistrarEmpresa.vue'
+import IniciarProceso from '../views/IniciarProceso.vue'
 import axios from "axios";
 const routes = [
   {
@@ -47,6 +48,11 @@ const routes = [
     path: '/RegistrarEmpresa',
     name: 'RegistrarEmpresa',
     component: RegistrarEmpresa
+  },
+  {
+    path: '/IniciarProceso',
+    name: 'IniciarProceso',
+    component: IniciarProceso
   },
 
 
