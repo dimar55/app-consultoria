@@ -19,7 +19,7 @@
             <div class="ctn_opciones">
                 <h1>VER PROCESOS</h1>
                 <img src="../assets/portapapeles.png" alt="">
-                <button class="boton">VER</button>
+                <button class="boton" @click="go_VerProceso">VER</button>
             </div>
 
             <div class="ctn_opciones">
@@ -65,6 +65,9 @@
         },
         go_RegistrarProceso(){
             this.$router.push({ path: '/IniciarProceso' });
+        },
+        go_VerProceso(){
+            this.$router.push({ path: '/VerProcesos' });
         }
        
 
