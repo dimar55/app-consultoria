@@ -64,7 +64,7 @@ const routes = [
   },
 
   {
-    path: '/PrimeraFase',
+    path: '/PrimeraFase/:Id_cta',
     name: 'PrimeraFase',
     component: PrimeraFase
   },

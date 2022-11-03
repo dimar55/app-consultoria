@@ -157,7 +157,7 @@ export default {
             if (fase == 2) url = "http://localhost:3000/desarrollo/"
             axios.get(url + Id_cta).then((result) => {
                 if (!result.data.success) {
-                    alert("Ir a registrar fase")
+                    this.$router.push({ name: 'PrimeraFase', params: { Id_cta } });                            
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -167,7 +167,7 @@ export default {
                     });
                 }
             }).catch((err) => {
-                alert("Ir a registrar fase")
+                this.$router.push({ name: 'PrimeraFase', params: { Id_cta } });          
             })
         }
 
