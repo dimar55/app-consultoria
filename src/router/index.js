@@ -108,4 +108,26 @@ router.beforeEach(async (to, from) => {
 
 })
 
+router.beforeEach(async (to, from) => {
+  if (
+    sessionStorage.getItem('jwt') &&
+    to.name == 'Login'
+  ) {
+   // return { name: 'Menu' }
+    let token = sessionStorage.getItem('jwt');
+    let res = await axios.post("http://localhost:3000/user/auth/verifyToken", {token})
+    .then((result)=>{
+      sessionStorage.setItem("User", result.data.body.decoded.user.Nombre_usu);
+      sessionStorage.setItem("Codigo_usu", result.data.body.decoded.user.Codigo_usu);
+      sessionStorage.setItem("Tipo", result.data.body.decoded.user.Tipo_usu);
+      return result.data.success
+    }).catch((err)=>{
+      return false;
+    });
+    if(res){
+      return { name: 'Menu' }
+    }
+  }
+
+})
 export default router

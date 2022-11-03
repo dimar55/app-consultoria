@@ -21,7 +21,7 @@
                             <input type="text" v-model="epp.Descripcion_epp" required>
                         </div>
                         <div class="text-centerB">
-                            <button class="boton mbttm" type="submit">ASOCIAR</button>
+                            <button class="boton mbttm" type="submit">AÑADIR</button>
                         </div>
                     </form>
                 </div>
@@ -31,6 +31,104 @@
 
 
 
+    <transition name="fade">
+        <div class="modal-overlay" v-if="modals.showModalEquipo"></div>
+    </transition>
+    <transition name="fade">
+        <div class="modal" v-if="modals.showModalEquipo">
+            <div class="modal-container">
+                <div class="container-flex">
+                    <h1>Añadir Equipo</h1>
+                    <img src="../assets/icon_X.png" alt="" @click="modals.showModalEquipo = false">
+                </div>
+                <div>
+                    <form class="formUsu" v-on:submit.prevent="añadirEquipo">
+                        <div class="campos_usu">
+                            <p>NOMBRE DEL EQUIPO:</p>
+                            <input type="text" v-model="equipo.Nombre_equipo" required>
+                        </div>
+                        <div class="campos_usu">
+                            <p>DESCRIPCIÓN:</p>
+                            <input type="text" v-model="equipo.Descripcion_equipo" required>
+                        </div>
+                        <div class="text-centerB">
+                            <button class="boton mbttm" type="submit">AÑADIR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </transition>
+
+
+
+    <transition name="fade">
+        <div class="modal-overlay" v-if="modals.showModalParametro"></div>
+    </transition>
+    <transition name="fade">
+        <div class="modal" v-if="modals.showModalParametro">
+            <div class="modal-container">
+                <div class="container-flex">
+                    <h1>Añadir Parametro</h1>
+                    <img src="../assets/icon_X.png" alt="" @click="modals.showModalParametro = false">
+                </div>
+                <div>
+                    <form class="formUsu" v-on:submit.prevent="añadirParametro">
+                        <div class="campos_usu">
+                            <p>DESCRIPCIÓN:</p>
+                            <input type="text" v-model="parametro.Descripcion_param" required>
+                        </div>
+                        <div class="text-centerB">
+                            <button class="boton mbttm" type="submit">AÑADIR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </transition>
+
+
+
+    <transition name="fade">
+        <div class="modal-overlay" v-if="modals.showModalActividad"></div>
+    </transition>
+    <transition name="fade">
+        <div class="modal" v-if="modals.showModalActividad">
+            <div class="modal-container">
+                <div class="container-flex">
+                    <h1>Añadir Actividad</h1>
+                    <img src="../assets/icon_X.png" alt="" @click="modals.showModalActividad = false">
+                </div>
+                <div>
+                    <form class="formUsu" v-on:submit.prevent="añadirActividad">
+                        <div class="campos_usu">
+                            <p>NOMBRE:</p>
+                            <input type="text" v-model="actividad.Nombre_act" required>
+                        </div>
+                        <div class="campos_usu">
+                            <p>DESCRIPCIÓN:</p>
+                            <input type="text" v-model="actividad.Descripcion_act" required>
+                        </div>
+                        <div class="campos_usu">
+                            <p>CALIDAD:</p>
+                            <input type="text" v-model="actividad.Calidad_act" required>
+                        </div>
+                        <div class="campos_usu">
+                            <p>SEGURIDAD:</p>
+                            <input type="text" v-model="actividad.Seguridad_act" required>
+                        </div>
+                        <div class="campos_usu">
+                            <p>AMBIENTE:</p>
+                            <input type="text" v-model="actividad.Ambiente_act" required>
+                        </div>
+                        <div class="text-centerB">
+                            <button class="boton mbttm" type="submit">AÑADIR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </transition>
 
 
     <div class="ctnProEncuentro">
@@ -40,15 +138,15 @@
 
         <div class="campos_proceso">
             <p>Descripción General:</p>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea name="" id="" cols="30" rows="10" v-model="encuentro.datos.Descripcion_pro_enc"></textarea>
         </div>
         <div class="campos_proceso">
             <p>Personal responsable del procedimiento:</p>
-            <input type="text">
+            <input type="text" v-model="encuentro.datos.Personal_pro_enc">
         </div>
         <div class="campos_proceso">
             <p>Observaciones:</p>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea name="" id="" cols="30" rows="10" v-model="encuentro.datos.Observaciones_pro_enc"></textarea>
         </div>
 
         <div class="ctn-tabla">
@@ -65,7 +163,8 @@
                     <tr v-for="epp in encuentro.epp">
                         <td>{{ epp[0] }}</td>
                         <td>{{ epp[1] }}</td>
-                        <td @click="eliminarEpp(epp[0])"><img src="../assets/icon_X.png" alt="" ></td>
+                        <td @click="eliminar(this.epps, this.encuentro.epp, epp[0])"><img src="../assets/icon_X.png"
+                                alt=""></td>
                     </tr>
                 </tbody>
             </table>
@@ -82,17 +181,20 @@
                     <tr>
                         <th>NOMBRE DEL EQUIPO</th>
                         <th>DESCRIPCIÓN</th>
+                        <th>ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Nombre del equipo</td>
-                        <td>Soy la Descripción</td>
+                    <tr v-for="equipo in encuentro.equipo">
+                        <td>{{ equipo[0] }}</td>
+                        <td>{{ equipo[1] }}</td>
+                        <td @click="eliminar(this.equipos, this.encuentro.equipo, equipo[0])"><img
+                                src="../assets/icon_X.png" alt=""></td>
                     </tr>
                 </tbody>
             </table>
             <div class="iconAdd">
-                <img src="../assets/icons_add.png" alt="">
+                <img src="../assets/icons_add.png" alt="" @click="modals.showModalEquipo = true">
             </div>
         </div>
 
@@ -101,19 +203,20 @@
             <table class="Table">
                 <thead>
                     <tr>
-                        <th>NOMBRE DEL PARAMENTRO</th>
                         <th>DESCRIPCIÓN</th>
+                        <th>ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>soy el Nombre del equipo</td>
-                        <td>Soy la Descripción</td>
+                    <tr v-for="parametro in encuentro.parametro">
+                        <td>{{ parametro[0] }}</td>
+                        <td @click="eliminar(this.parametros, this.encuentro.parametro, parametro[0])"><img
+                                src="../assets/icon_X.png" alt=""></td>
                     </tr>
                 </tbody>
             </table>
             <div class="iconAdd">
-                <img src="../assets/icons_add.png" alt="">
+                <img src="../assets/icons_add.png" alt="" @click="modals.showModalParametro = true">
             </div>
         </div>
 
@@ -127,25 +230,28 @@
                         <th>CALIDAD</th>
                         <th>SEGURIDAD</th>
                         <th>AMBIENTE</th>
+                        <th>ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>soy el Nombre</td>
-                        <td>Soy la Descripción</td>
-                        <td>soy la calidad</td>
-                        <td>Soy la seguridad</td>
-                        <td>Soy el ambiente</td>
+                    <tr v-for="actividad in encuentro.actividad">
+                        <td>{{ actividad[0] }}</td>
+                        <td>{{ actividad[1] }}</td>
+                        <td>{{ actividad[2] }}</td>
+                        <td>{{ actividad[3] }}</td>
+                        <td>{{ actividad[4] }}</td>
+                        <td @click="eliminar(this.actividades, this.encuentro.actividad, actividad[0])"><img
+                                src="../assets/icon_X.png" alt=""></td>
                     </tr>
                 </tbody>
             </table>
             <div class="iconAdd">
-                <img src="../assets/icons_add.png" alt="">
+                <img src="../assets/icons_add.png" alt="" @click="modals.showModalActividad = true">
             </div>
         </div>
-        <div class="btn">
-            <button class="boton" @click="registrarFase">REGISTRAR</button>
-        </div>
+        <form class="btn" v-on:submit.prevent="registrarFase">
+            <button class="boton">REGISTRAR</button>
+        </form>
 
     </div>
 </template>
@@ -158,13 +264,33 @@ export default {
     data() {
         return {
             modals: {
-                showModalEpp: false
+                showModalEpp: false,
+                showModalEquipo: false,
+                showModalParametro: false,
+                showModalActividad: false
             },
             epp: {
                 Elemento_epp: "",
                 Descripcion_epp: ""
             },
             epps: [],
+            equipo: {
+                Nombre_equipo: "",
+                Descripcion_equipo: ""
+            },
+            equipos: [],
+            parametro: {
+                Descripcion_param: ""
+            },
+            parametros: [],
+            actividad: {
+                Nombre_act: "",
+                Descripcion_act: "",
+                Calidad_act: "",
+                Seguridad_act: "",
+                Ambiente_act: ""
+            },
+            actividades: [],
             encuentro: {
                 datos: {
                     Descripcion_pro_enc: "",
@@ -180,34 +306,32 @@ export default {
         }
     },
     methods: {
-        isContained(Epp) {
-            for (let index = 0; index < this.epps.length; index++) {
-                const element = this.epps[index];
+        isContained(Arr, Epp) {
+            for (let index = 0; index < Arr.length; index++) {
+                const element = Arr[index];
                 if (element.toLowerCase() === Epp.toLowerCase()) return true;
             }
             return false;
         },
-        eliminarEpp(Epp) {
-            alert("Elimnar - "+Epp)
+        eliminar(Arr, Arr2, Epp) {
             let id = 0;
-            for (let index = 0; index < this.epps.length; index++) {
-                    const element = this.epps[index];
-                    if (element == Epp){
-                        id = index;
-                    }
+            for (let index = 0; index < Arr.length; index++) {
+                const element = Arr[index];
+                if (element == Epp) {
+                    id = index;
+                }
             }
-            this.epps.splice(id, 1);
-            this.encuentro.epp.splice(id, 1);
+            Arr.splice(id, 1);
+            Arr2.splice(id, 1);
         },
         añadirEpp() {
-            if (!this.isContained(this.epp.Elemento_epp)) {
+            if (!this.isContained(this.epps, this.epp.Elemento_epp)) {
                 this.epps.push(this.epp.Elemento_epp);
                 this.encuentro.epp.push([this.epp.Elemento_epp, this.epp.Descripcion_epp]);
                 this.modals.showModalEpp = false;
                 this.epp.Elemento_epp = "";
                 this.epp.Descripcion_epp = "";
             } else {
-                
                 Swal.fire({
                     icon: "error",
                     title: "EPP ya ha sido ingresado",
@@ -219,8 +343,94 @@ export default {
                 this.epp.Descripcion_epp = "";
             }
         },
+        añadirEquipo() {
+            if (!this.isContained(this.equipos, this.equipo.Nombre_equipo)) {
+                this.equipos.push(this.equipo.Nombre_equipo);
+                this.encuentro.equipo.push([this.equipo.Nombre_equipo, this.equipo.Descripcion_equipo]);
+                this.modals.showModalEquipo = false;
+                this.equipo.Nombre_equipo = "";
+                this.equipo.Descripcion_equipo = "";
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Equipo ya ha sido ingresado",
+                    showConfirmButton: false,
+                    timer: 1200,
+                });
+                this.modals.showModalEquipo = false;
+                this.equipo.Nombre_equipo = "";
+                this.equipo.Descripcion_equipo = "";
+            }
+        },
+        añadirParametro() {
+            if (!this.isContained(this.parametros, this.parametro.Descripcion_param)) {
+                this.parametros.push(this.parametro.Descripcion_param);
+                this.encuentro.parametro.push([this.parametro.Descripcion_param]);
+                this.modals.showModalParametro = false;
+                this.parametro.Descripcion_param = "";
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Parametro ya ha sido ingresado",
+                    showConfirmButton: false,
+                    timer: 1200,
+                });
+                this.modals.showModalParametro = false;
+                this.parametro.Descripcion_param = "";
+            }
+        },
+        añadirActividad(){
+            if (!this.isContained(this.actividades, this.actividad.Nombre_act)) {
+                this.actividades.push(this.actividad.Nombre_act);
+                this.encuentro.actividad.push([this.actividad.Nombre_act, this.actividad.Descripcion_act, this.actividad.Calidad_act, this.actividad.Seguridad_act, this.actividad.Ambiente_act]);
+                this.modals.showModalActividad = false;
+                this.actividad.Nombre_act = ""
+                this.actividad.Descripcion_act = ""
+                this.actividad.Calidad_act = ""
+                this.actividad.Seguridad_act = ""
+                this.actividad.Ambiente_act = ""
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Actividad ya ha sido ingresada",
+                    showConfirmButton: false,
+                    timer: 1200,
+                });
+                this.modals.showModalActividad = false;
+                this.actividad.Nombre_act = ""
+                this.actividad.Descripcion_act = ""
+                this.actividad.Calidad_act = ""
+                this.actividad.Seguridad_act = ""
+                this.actividad.Ambiente_act = ""
+            }
+        },
         registrarFase() {
-            alert(this.encuentro.datos.Id_cta)
+            axios.post("http://localhost:3000/encto/", this.encuentro)
+                .then((result) => {
+                    if (result.data.success) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Fase creada exitosamente",
+                            showConfirmButton: false,
+                            timer: 1000,
+                        });
+                        this.$router.push({ path: '/Menu' });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "No se ha podido crear la fase",
+                            showConfirmButton: false,
+                            timer: 1200,
+                        });
+                    }
+                }).catch((err) => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "No se ha podido crear la fase",
+                        showConfirmButton: false,
+                        timer: 1200,
+                    });
+                })
         }
     }
 }
