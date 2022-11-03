@@ -22,7 +22,6 @@
             </div>
         </div>
 
-       
  <div class="results">
     <div class="consultas">
             <div class="campos_consulta">
@@ -93,12 +92,10 @@
                 <p class="campo_consulta">FECHA DE INICIO: </p>
                 <p>2022/10/27</p>
             </div>
+            <button class="boton_proceso">VER DETALLLES</button>
             <button class="boton_proceso">REGISTRAR FASE</button>
-        </div>
-        
+        </div> 
  </div>
-        
-
     </div>
 </template>
 
@@ -208,6 +205,4 @@ export default{
     margin-top: 20px;
     margin-right: 10px;
 }
-
-
 </style>

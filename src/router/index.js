@@ -8,6 +8,7 @@ import RegistrarUsuario from '../views/RegistrarUsuario.vue'
 import RegistrarEmpresa from '../views/RegistrarEmpresa.vue'
 import IniciarProceso from '../views/IniciarProceso.vue'
 import VerProcesos from '../views/VerProcesos.vue'
+import PrimeraFase from '../views/PrimeraFase.vue'
 import axios from "axios";
 const routes = [
   {
@@ -60,6 +61,12 @@ const routes = [
     path: '/VerProcesos',
     name: 'VerProcesos',
     component: VerProcesos
+  },
+
+  {
+    path: '/PrimeraFase',
+    name: 'PrimeraFase',
+    component: PrimeraFase
   },
 
 
