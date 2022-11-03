@@ -9,6 +9,7 @@ import RegistrarEmpresa from '../views/RegistrarEmpresa.vue'
 import IniciarProceso from '../views/IniciarProceso.vue'
 import VerProcesos from '../views/VerProcesos.vue'
 import PrimeraFase from '../views/PrimeraFase.vue'
+import SegundaFase from '../views/SegundaFase.vue'
 import axios from "axios";
 const routes = [
   {
@@ -67,6 +68,12 @@ const routes = [
     path: '/PrimeraFase/:Id_cta',
     name: 'PrimeraFase',
     component: PrimeraFase
+  },
+
+  {
+    path: '/SegundaFase',
+    name: 'SegundaFase',
+    component: SegundaFase
   },
 
 
