@@ -162,7 +162,7 @@
                     <tr v-for="epp in encuentro.epp">
                         <td>{{ epp[0] }}</td>
                         <td>{{ epp[1] }}</td>
-                        <td @click="eliminar(this.epps, this.encuentro.epp, epp[0])"><img src="../assets/icon_X.png"
+                        <td @click="eliminar(this.epps, this.encuentro.epp, epp[0])"><img src="../assets/iconX.png"
                                 alt=""></td>
                     </tr>
                 </tbody>
@@ -188,7 +188,7 @@
                         <td>{{ equipo[0] }}</td>
                         <td>{{ equipo[1] }}</td>
                         <td @click="eliminar(this.equipos, this.encuentro.equipo, equipo[0])"><img
-                                src="../assets/icon_X.png" alt=""></td>
+                                src="../assets/iconX.png" alt=""></td>
                     </tr>
                 </tbody>
             </table>
@@ -210,7 +210,7 @@
                     <tr v-for="parametro in encuentro.parametro">
                         <td>{{ parametro[0] }}</td>
                         <td @click="eliminar(this.parametros, this.encuentro.parametro, parametro[0])"><img
-                                src="../assets/icon_X.png" alt=""></td>
+                                src="../assets/iconX.png" alt=""></td>
                     </tr>
                 </tbody>
             </table>
@@ -240,7 +240,7 @@
                         <td>{{ actividad[3] }}</td>
                         <td>{{ actividad[4] }}</td>
                         <td @click="eliminar(this.actividades, this.encuentro.actividad, actividad[0])"><img
-                                src="../assets/icon_X.png" alt=""></td>
+                                src="../assets/iconX.png" alt=""></td>
                     </tr>
                 </tbody>
             </table>
@@ -440,7 +440,7 @@ export default {
 .ctnProEncuentro {
     margin: auto;
     margin-top: 100px;
-    width: 850px;
+    width: 1000px;
     color: white;
     justify-content: center;
     background: linear-gradient(180deg, #0C853B 0%, rgba(37, 145, 6, 0.85) 100%);
@@ -468,7 +468,7 @@ export default {
 }
 
 .campos_proceso textarea {
-    width: 700px;
+    width: 840px;
     height: 300px;
     border: none;
     border-radius: 25px;
@@ -478,7 +478,7 @@ export default {
 }
 
 .campos_proceso input {
-    width: 700px;
+    width: 840px;
     height: 30px;
     border: none;
     border-radius: 25px;

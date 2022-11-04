@@ -157,7 +157,7 @@ export default {
     bottom: 0;
     z-index: 100;
     background: rgba(0, 0, 0, 0.4);
-
+    
 }
 
 .modal {
@@ -169,14 +169,27 @@ export default {
 }
 
 .modal-container {
-    background: gray;
+    background: #A6E8FA;
     padding: 2rem;
     border-radius: 25px;
+
+}
+
+
+.modal-container p{
+    font-size: 30px;
+    padding-right: 10px;
 }
 
 .container-flex {
     display: flex;
     justify-content: space-between;
+}
+
+.container-flex h1{
+    margin-left: 30px;
+    font-size: 30px;
+    font-weight: bolder;
 }
 
 .text-centerB {

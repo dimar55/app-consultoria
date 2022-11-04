@@ -35,6 +35,7 @@
                         <th>CELULAR</th>
                         <th>DESCRIPCIÓN DEL APORTE O RESPONSABILIDAD</th>
                         <th>VALOR DE ESTIMACIÓN DEL APORTE</th>
+                        <th>ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,6 +46,7 @@
                         <td>Soy el celular</td>
                         <td>Soy la descripcion del aporte o responsabilidad</td>
                         <td>Soy el valor de estimación del aporte</td>
+                        <td>X</td>
                     </tr>
                 </tbody>
             </table>
@@ -60,6 +62,7 @@
                         <th>CALIFICACIÓN CUANTITATIVA DEL IMPACTO</th>
                         <th>CALIFICACIÓN CUALITATIVA DEL IMPACTO</th>
                         <th>ASPECTOS POR MEJORAR</th>
+                        <th>ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,6 +70,7 @@
                         <td>soy la calificacion cuantitavia del impacto</td>
                         <td>soy la calificacion cualitavia del impacto</td>
                         <td>soy los aspectos por mejorar</td>
+                        <td>X</td>
                     </tr>
                 </tbody>
             </table>
@@ -91,7 +95,7 @@ export default{
 .ctnProDesarrollo {
     margin: auto;
     margin-top: 100px;
-    width: 1200px;
+    width: 1300px;
     color: white;
     background: linear-gradient(180deg, #0C853B 0%, rgba(37, 145, 6, 0.85) 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
