@@ -2,7 +2,7 @@
     <div>
        <div class="title">
             <div class="btn_menu">
-                    <label for="btn-menu"><img src="../assets/icon_menu.png" alt=""/></label>
+                    <label @click="show_barra = true"><img src="../assets/icon_menu.png" alt=""/></label>
                 </div> 
                 <div>
                     <h1>CONSULTORÍA JURÍDICA</h1>
@@ -13,24 +13,24 @@
                   
         </div>
 
-        <input type="checkbox" id="btn-menu">
 
-        <div class="container-menu">
+
+        <div class="container-menu" v-show="show_barra">
             <div class="cont-menu">
                 <div class="logo_user">
-                    <img src="../assets/hombre.png" alt="" width="150px" height="150px">
+                    <img src="../assets/hombre.png" alt="">
                 </div>
                 <nav>
-                    <a  @click="go_Menu">Menu principal</a>
-                    <a  @click="go_RegistrarUsuario">Registrar Usuario</a>
-                    <a  @click="go_RegistrarEmpresa">Registrar Empresa</a>
-                    <a  @click="go_RegistrarProceso">Registrar Proceso</a>
-                    <a   @click="go_VerProceso">Ver Proceso</a>
+                    <a  @click="go_Menu" >Menu principal</a>
+                    <a  @click="go_RegistrarUsuario" >Registrar Usuario</a>
+                    <a  @click="go_RegistrarEmpresa" >Registrar Empresa</a>
+                    <a  @click="go_RegistrarProceso" >Registrar Proceso</a>
+                    <a  @click="go_VerProceso" >Ver Proceso</a>
                     <a  @click="go_AjustarFechas">Ajustar Fechas</a>
-                    <a  @click="go_crearDocumento">Crear Documento</a>
+                    <a  @click="go_crearDocumento" >Crear Documento</a>
                     <a  @click="go_crearPrograma">Crear Programa</a>
                 </nav>
-            <label for="btn-menu"><img src="../assets/icon_X.png" alt=""></label>
+            <label  @click="show_barra = false"><img src="../assets/icon_X.png" alt=""></label>
             </div>
         </div>
 
@@ -41,30 +41,44 @@
 <script>
     export default {
     name: 'MenuLateral',
+    data(){
+        return{
+            show_barra: false
+        }
+    },
     methods: {
         go_crearDocumento(){
+            this.show_barra=false;
             this.$router.push({ path: '/CrearDocumento' });
+            
         },
 
         go_crearPrograma(){
+            this.show_barra=false;
             this.$router.push({ path: '/CrearPrograma' });
         },
         go_Menu(){
+            this.show_barra=false;
             this.$router.push({ path: '/Menu' });
         },
         go_AjustarFechas(){
+            this.show_barra=false;
             this.$router.push({ path: '/AjustarFecha' });
         },
         go_RegistrarUsuario(){
+            this.show_barra=false;
             this.$router.push({ path: '/RegistrarUsuario' });
         },
         go_RegistrarEmpresa(){
+            this.show_barra=false;
             this.$router.push({ path: '/RegistrarEmpresa' });
         },
         go_RegistrarProceso(){
+            this.show_barra=false;
             this.$router.push({ path: '/IniciarProceso' });
         },
         go_VerProceso(){
+            this.show_barra=false;
             this.$router.push({ path: '/VerProcesos' });
         }
     } 
@@ -121,13 +135,10 @@
         top: 0; left: 0;
         transition: all 500ms ease;
         opacity: 0;
-        visibility: hidden;
+
     }
 
-    #btn-menu:checked ~ .container-menu{
-        opacity: 1;
-        visibility: visible;
-    }
+
 
     .cont-menu{
         width: 100%;
