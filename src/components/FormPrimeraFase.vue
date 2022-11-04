@@ -1,5 +1,4 @@
 <template>
-
     <transition name="fade">
         <div class="modal-overlay" v-if="modals.showModalEpp"></div>
     </transition>
