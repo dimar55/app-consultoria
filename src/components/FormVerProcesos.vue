@@ -37,16 +37,18 @@
                 </div>
                 <div class="campos_consulta">
                     <p class="campo_consulta">FASE DEL PROCESO: </p>
-                    <p>{{ proceso.Fase_cta }}</p>
+                    <p>{{ this.consultarFase(proceso.Fase_cta) }}</p>
                 </div>
                 <div class="campos_consulta">
                     <p class="campo_consulta">FECHA DE INICIO: </p>
                     <p>{{ proceso.Fecha_inicio }}</p>
                 </div>
+                <div v-show="proceso.Fase_cta != 4">
                 <button class="boton_proceso" @click="verDetalle(proceso.Id_cta, proceso.Fase_cta)">VER
                     DETALLLES</button>
                 <button class="boton_proceso" @click="registrarFase(proceso.Id_cta, proceso.Fase_cta)">REGISTRAR
                     FASE</button>
+                </div>
             </div>
         </div>
 
@@ -130,7 +132,7 @@ export default {
         verDetalle(Id_cta, fase) {
             let url = "";
             if (fase == 1) url = "http://localhost:3000/encto/"
-            if (fase == 2) url = "http://localhost:3000/desarrollo/"
+            if (fase == 2) url = "http://localhost:3000/dsrllo/"
             axios.get(url + Id_cta).then((result) => {
                 if (result.data.success) {
                     alert("Ir a ver detalles")
@@ -154,10 +156,11 @@ export default {
         registrarFase(Id_cta, fase) {
             let url = "";
             if (fase == 1) url = "http://localhost:3000/encto/"
-            if (fase == 2) url = "http://localhost:3000/desarrollo/"
+            if (fase == 2) url = "http://localhost:3000/dsrllo/"
             axios.get(url + Id_cta).then((result) => {
                 if (!result.data.success) {
-                    this.$router.push({ name: 'PrimeraFase', params: { Id_cta } });                            
+                    if(fase == 1) this.$router.push({ name: 'PrimeraFase', params: { Id_cta } });       
+                    if(fase == 2) this.$router.push({ name: 'SegundaFase', params: { Id_cta } });                            
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -167,8 +170,20 @@ export default {
                     });
                 }
             }).catch((err) => {
-                this.$router.push({ name: 'PrimeraFase', params: { Id_cta } });          
+                if(fase == 1) this.$router.push({ name: 'PrimeraFase', params: { Id_cta } });       
+                if(fase == 2) this.$router.push({ name: 'SegundaFase', params: { Id_cta } });             
             })
+        },
+        consultarFase(fase){
+            if(fase == 1){
+                return "Fase de encuentro";
+            }else if(fase == 2){
+                return "Fase de desarrollo";
+            }else if(fase == 3){
+                return "Fase de cierre";
+            }else{
+                return "Finalizado";
+            }
         }
 
     },
