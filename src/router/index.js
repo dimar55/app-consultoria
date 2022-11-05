@@ -72,7 +72,7 @@ const routes = [
   },
 
   {
-    path: '/SegundaFase',
+    path: '/SegundaFase/:Id_cta',
     name: 'SegundaFase',
     component: SegundaFase
   },
