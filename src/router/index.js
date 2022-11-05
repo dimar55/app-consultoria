@@ -15,6 +15,7 @@ import SegundaFase from '../views/SegundaFase.vue'
 import TerceraFase from '../views/TerceraFase.vue'
 import VerPrimeraFase from '../views/VerPrimeraFase.vue'
 import VerSegundaFase from '../views/VerSegundaFase.vue'
+import VerTerceraFase from '../views/VerTerceraFase.vue'
 import axios from "axios";
 const routes = [
   {
@@ -109,6 +110,12 @@ const routes = [
     path: '/VerSegundafase/:Id_cta',
     name: 'VerSegundaFase',
     component: VerSegundaFase
+  },
+
+  {
+    path: '/VerTerceraFase/:Id_cta',
+    name: 'VerTerceraFase',
+    component: VerTerceraFase
   },
 
 ]
