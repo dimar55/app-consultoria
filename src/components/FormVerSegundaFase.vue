@@ -163,7 +163,11 @@ export default {
                             showConfirmButton: false,
                             timer: 1000,
                         });
-                        this.$router.push({ path: '/Menu' });
+                        if (sessionStorage.getItem("Tipo_usu") == "Administrador") {
+                            this.$router.push({ path: '/Menu' });
+                        } else {
+                            this.$router.push({ path: '/MenuUsu' });
+                        }
                     } else {
                         Swal.fire({
                             icon: "error",

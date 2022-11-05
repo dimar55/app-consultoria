@@ -6,7 +6,8 @@
 
         <div class="campos_proceso">
             <p>Descripción General:</p>
-            <textarea name="" id="" cols="30" rows="10" disabled v-model="encuentro.datos.Descripcion_pro_enc"></textarea>
+            <textarea name="" id="" cols="30" rows="10" disabled
+                v-model="encuentro.datos.Descripcion_pro_enc"></textarea>
         </div>
         <div class="campos_proceso">
             <p>Personal responsable del procedimiento:</p>
@@ -14,7 +15,8 @@
         </div>
         <div class="campos_proceso">
             <p>Observaciones:</p>
-            <textarea name="" id="" cols="30" rows="10" disabled v-model="encuentro.datos.Observaciones_pro_enc"></textarea>
+            <textarea name="" id="" cols="30" rows="10" disabled
+                v-model="encuentro.datos.Observaciones_pro_enc"></textarea>
         </div>
 
         <div class="ctn-tabla">
@@ -28,8 +30,8 @@
                 </thead>
                 <tbody>
                     <tr v-for="epp in encuentro.epp">
-                        <td>{{epp.Elemento_epp}}</td>
-                        <td>{{epp.Descripcion_epp}}</td>
+                        <td>{{ epp.Elemento_epp }}</td>
+                        <td>{{ epp.Descripcion_epp }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -46,9 +48,9 @@
                 </thead>
                 <tbody>
                     <tr v-for="equipo in encuentro.equipos">
-                        <td>{{equipo.Nombre_equipo}}</td>
-                        <td>{{equipo.Descripcion_equipo}}</td>
-                       
+                        <td>{{ equipo.Nombre_equipo }}</td>
+                        <td>{{ equipo.Descripcion_equipo }}</td>
+
                     </tr>
                 </tbody>
             </table>
@@ -64,7 +66,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="parametro in encuentro.parametro">
-                        <td>{{parametro.Descripcion_param}}</td>
+                        <td>{{ parametro.Descripcion_param }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -84,11 +86,11 @@
                 </thead>
                 <tbody>
                     <tr v-for="actividad in encuentro.actividad">
-                        <td>{{actividad.Nombre_act}}</td>
-                        <td>{{actividad.Descripcion_act}}</td>
-                        <td>{{actividad.Calidad_act}}</td>
-                        <td>{{actividad.Seguridad_act}}</td>
-                        <td>{{actividad.Ambiente_act}}</td>
+                        <td>{{ actividad.Nombre_act }}</td>
+                        <td>{{ actividad.Descripcion_act }}</td>
+                        <td>{{ actividad.Calidad_act }}</td>
+                        <td>{{ actividad.Seguridad_act }}</td>
+                        <td>{{ actividad.Ambiente_act }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -107,8 +109,8 @@
                 </thead>
                 <tbody>
                     <tr v-for="firma in firmas">
-                        <td>{{firma.Nombre_usu}}</td>
-                        <td>{{firma.Tipo_usu}}</td>
+                        <td>{{ firma.Nombre_usu }}</td>
+                        <td>{{ firma.Tipo_usu }}</td>
                         <td>
                             <img src="../assets/icon_user.png" alt="" v-show="firma.Firma_encuentro == 1">
                             <img src="../assets/iconX.png" alt="" v-show="firma.Firma_encuentro == 0">
@@ -138,9 +140,9 @@
 <script>
 import axios from "axios";
 import Swal from "sweetalert2";
-export default{
+export default {
     name: 'FormVerPrimeraFase',
-    data(){
+    data() {
         return {
             encuentro: {
                 datos: {
@@ -159,36 +161,36 @@ export default{
         }
     },
     methods: {
-        getDetalles(){
-            axios.get("http://localhost:3000/encto/"+this.$route.params.Id_cta)
-            .then((result)=>{
-                if(result.data.success){
-                    this.encuentro = result.data.body;
-                }else{
-                    alert("Error al cargar datos");
-                }
-            }).catch((err)=>{
-                console.log("Error al cargar datos" + err)
-            })
+        getDetalles() {
+            axios.get("http://localhost:3000/encto/" + this.$route.params.Id_cta)
+                .then((result) => {
+                    if (result.data.success) {
+                        this.encuentro = result.data.body;
+                    } else {
+                        alert("Error al cargar datos");
+                    }
+                }).catch((err) => {
+                    console.log("Error al cargar datos" + err)
+                })
         },
-        getFirmas(){
-            axios.get("http://localhost:3000/cta/Firmas/"+this.$route.params.Id_cta)
-            .then((result)=>{
-                if(result.data.success) return this.firmas = result.data.body;
-                alert("Error al cargar las firmas");
-            }).catch((err)=>{
-                console.log("Error al cargar firmas" + err);
-            })
+        getFirmas() {
+            axios.get("http://localhost:3000/cta/Firmas/" + this.$route.params.Id_cta)
+                .then((result) => {
+                    if (result.data.success) return this.firmas = result.data.body;
+                    alert("Error al cargar las firmas");
+                }).catch((err) => {
+                    console.log("Error al cargar firmas" + err);
+                })
         },
-        firmarFase(){
+        firmarFase() {
             let firmaData = {
-                Codigo_usu: sessionStorage.getItem("Codigo_usu"), 
-                Id_cta: this.$route.params.Id_cta, 
+                Codigo_usu: sessionStorage.getItem("Codigo_usu"),
+                Id_cta: this.$route.params.Id_cta,
                 Fase_id: 1,
                 Firma: this.firmado ? 1 : 0
             }
             axios.post("http://localhost:3000/cta/Firmar", firmaData)
-            .then((result) => {
+                .then((result) => {
                     if (result.data.success) {
                         Swal.fire({
                             icon: "success",
@@ -196,7 +198,12 @@ export default{
                             showConfirmButton: false,
                             timer: 1000,
                         });
-                        this.$router.push({ path: '/Menu' });
+                        if (sessionStorage.getItem("Tipo_usu") == "Administrador") {
+                            this.$router.push({ path: '/Menu' });
+                        } else {
+                            this.$router.push({ path: '/MenuUsu' });
+                        }
+
                     } else {
                         Swal.fire({
                             icon: "error",
@@ -215,7 +222,7 @@ export default{
                 })
         }
     },
-    mounted(){
+    mounted() {
         this.getFirmas();
         this.getDetalles();
     }
@@ -223,19 +230,18 @@ export default{
 </script>
 
 <style>
-
-.ctn-firma{
- display: flex;
- align-items: baseline;
+.ctn-firma {
+    display: flex;
+    align-items: baseline;
 }
- .ctn-firma p{
+
+.ctn-firma p {
     margin: 40px;
     font-size: 35px;
- }
+}
 
- .ctn-firma input{
+.ctn-firma input {
     width: 30px;
     height: 30px;
- }
- 
+}
 </style>

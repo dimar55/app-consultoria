@@ -140,6 +140,15 @@ export default {
                 url = "http://localhost:3000/dsrllo/";
                 enviarFase = "VerSegundaFase";
             }
+            if(fase == 3){
+                Swal.fire({
+                        icon: "info",
+                        title: "En desarrollo...",
+                        showConfirmButton: false,
+                        timer: 1200,
+                });
+                return;
+            }
             axios.get(url + Id_cta).then((result) => {
                 if (result.data.success) {
                     this.$router.push({ name: enviarFase, params: { Id_cta } });  
@@ -164,6 +173,15 @@ export default {
             let url = "";
             if (fase == 1) url = "http://localhost:3000/encto/"
             if (fase == 2) url = "http://localhost:3000/dsrllo/"
+            if(fase == 3){
+                Swal.fire({
+                        icon: "info",
+                        title: "En desarrollo...",
+                        showConfirmButton: false,
+                        timer: 1200,
+                });
+                return;
+            }
             axios.get(url + Id_cta).then((result) => {
                 if (!result.data.success) {
                     if(fase == 1) this.$router.push({ name: 'PrimeraFase', params: { Id_cta } });       

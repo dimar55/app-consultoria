@@ -8,7 +8,7 @@
                     <h1>CONSULTORÍA JURÍDICA</h1>
                 </div>
                 <div class="icon">
-                  <img src="../assets/icon_user.png" alt="">
+                  <img src="../assets/icon_user.png" alt="" @click="cerrarSesion()">
                  
                 </div>  
                   
@@ -55,6 +55,10 @@
             this.show_barraUsu=false;
             this.$router.push({ path: '/VerProcesosUsu' });
         },
+        cerrarSesion(){
+            sessionStorage.clear();
+            this.$router.push({ path: '/' });
+        }
     },
     } 
 
