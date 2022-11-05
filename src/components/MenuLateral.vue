@@ -8,7 +8,7 @@
                     <h1>CONSULTORÍA JURÍDICA</h1>
                 </div>
                 <div class="icon">
-                  <img src="../assets/icon_user.png" alt="" @click="cerrarSesion()">
+                  <img src="../assets/iconLogout.png" alt="" @click="cerrarSesion()">
                  
                 </div>  
                   
