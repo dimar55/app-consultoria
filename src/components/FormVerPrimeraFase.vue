@@ -143,7 +143,6 @@ export default{
 .ctn-firma{
  display: flex;
  align-items: baseline;
- text-align: center;
 }
  .ctn-firma p{
     margin: 40px;
