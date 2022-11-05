@@ -67,13 +67,8 @@ import Swal from "sweetalert2";
                 enviarFase = "VerSegundaFase";
             }
             if(fase == 3){
-                Swal.fire({
-                        icon: "info",
-                        title: "En desarrollo...",
-                        showConfirmButton: false,
-                        timer: 1200,
-                });
-                return;
+                url = "http://localhost:3000/cierre/";
+                enviarFase = "VerTerceraFase";
             }
             axios.get(url + Id_cta).then((result) => {
                 if (result.data.success) {

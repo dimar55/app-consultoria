@@ -141,13 +141,8 @@ export default {
                 enviarFase = "VerSegundaFase";
             }
             if(fase == 3){
-                Swal.fire({
-                        icon: "info",
-                        title: "En desarrollo...",
-                        showConfirmButton: false,
-                        timer: 1200,
-                });
-                return;
+                url = "http://localhost:3000/cierre/";
+                enviarFase = "VerTerceraFase";
             }
             axios.get(url + Id_cta).then((result) => {
                 if (result.data.success) {
@@ -173,19 +168,12 @@ export default {
             let url = "";
             if (fase == 1) url = "http://localhost:3000/encto/"
             if (fase == 2) url = "http://localhost:3000/dsrllo/"
-            if(fase == 3){
-                Swal.fire({
-                        icon: "info",
-                        title: "En desarrollo...",
-                        showConfirmButton: false,
-                        timer: 1200,
-                });
-                return;
-            }
+            if(fase == 3) url = "http://localhost:3000/cierre/"
             axios.get(url + Id_cta).then((result) => {
                 if (!result.data.success) {
                     if(fase == 1) this.$router.push({ name: 'PrimeraFase', params: { Id_cta } });       
-                    if(fase == 2) this.$router.push({ name: 'SegundaFase', params: { Id_cta } });                            
+                    if(fase == 2) this.$router.push({ name: 'SegundaFase', params: { Id_cta } });     
+                    if(fase == 3) this.$router.push({ name: 'TerceraFase', params: { Id_cta } });                            
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -196,7 +184,8 @@ export default {
                 }
             }).catch((err) => {
                 if(fase == 1) this.$router.push({ name: 'PrimeraFase', params: { Id_cta } });       
-                if(fase == 2) this.$router.push({ name: 'SegundaFase', params: { Id_cta } });             
+                if(fase == 2) this.$router.push({ name: 'SegundaFase', params: { Id_cta } });   
+                if(fase == 3) this.$router.push({ name: 'TerceraFase', params: { Id_cta } });                
             })
         },
         consultarFase(fase){
