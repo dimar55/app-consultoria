@@ -135,7 +135,7 @@ export default {
             if (fase == 2) url = "http://localhost:3000/dsrllo/"
             axios.get(url + Id_cta).then((result) => {
                 if (result.data.success) {
-                    alert("Ir a ver detalles")
+                    this.$router.push({ name: 'VerPrimeraFase', params: { Id_cta } });  
                 } else {
                     Swal.fire({
                         icon: "error",

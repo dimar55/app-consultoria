@@ -78,7 +78,7 @@ const routes = [
   },
 
   {
-    path: '/VerPrimeraFase',
+    path: '/VerPrimeraFase/:Id_cta',
     name: 'VerPrimeraFase',
     component: VerPrimeraFase
   },
