@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Menu from '../views/Menu.vue'
+import MenuUsu from '../views/MenuUsu.vue'
 import CrearPrograma from '../views/CrearPrograma.vue'
 import CrearDocumento from '../views/CrearDocumento.vue'
 import AjustarFecha from '../views/AjustarFecha.vue'
@@ -8,6 +9,7 @@ import RegistrarUsuario from '../views/RegistrarUsuario.vue'
 import RegistrarEmpresa from '../views/RegistrarEmpresa.vue'
 import IniciarProceso from '../views/IniciarProceso.vue'
 import VerProcesos from '../views/VerProcesos.vue'
+import VerProcesosUsu from '../views/VerProcesosUsu.vue'
 import PrimeraFase from '../views/PrimeraFase.vue'
 import SegundaFase from '../views/SegundaFase.vue'
 import VerPrimeraFase from '../views/VerPrimeraFase.vue'
@@ -24,6 +26,12 @@ const routes = [
     path: '/Menu',
     name: 'Menu',
     component: Menu
+  },
+
+  {
+    path: '/MenuUsu',
+    name: 'MenuUsu',
+    component: MenuUsu
   },
 
   {
@@ -64,6 +72,12 @@ const routes = [
     path: '/VerProcesos',
     name: 'VerProcesos',
     component: VerProcesos
+  },
+
+  {
+    path: '/VerProcesosUsu',
+    name: 'VerProcesosUsu',
+    component: VerProcesosUsu
   },
 
   {
