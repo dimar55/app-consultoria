@@ -85,7 +85,7 @@
                         <td>{{ firma.Nombre_usu }}</td>
                         <td>{{ firma.Tipo_usu }}</td>
                         <td>
-                            <img src="../assets/icon_user.png" alt="" v-show="firma.Firma_desarrollo == 1">
+                            <img src="../assets/iconDone.png" alt="" v-show="firma.Firma_desarrollo == 1">
                             <img src="../assets/iconX.png" alt="" v-show="firma.Firma_desarrollo == 0">
                         </td>
 
