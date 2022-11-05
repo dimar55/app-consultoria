@@ -9,6 +9,7 @@
                 </div>
                 <div class="icon">
                   <img src="../assets/icon_user.png" alt="">
+                 
                 </div>  
                   
         </div>
@@ -19,7 +20,9 @@
             <div class="cont-menu">
                 <div class="logo_user">
                     <img src="../assets/hombre.png" alt="">
+                    <p>{{name_usuario}}</p>
                 </div>
+                
                 <nav>
                     <a  @click="go_Menu" >Menu principal</a>
                     <a  @click="go_RegistrarUsuario" >Registrar Usuario</a>
@@ -43,6 +46,7 @@
     name: 'MenuLateral',
     data(){
         return{
+            name_usuario: sessionStorage.getItem('User'),
             show_barra: false
         }
     },
@@ -121,9 +125,10 @@
         padding-top: 50px;
     }
 
-    
-    #btn-menu{
-        display: none;
+    .logo_user p{
+        color: white;
+        font-size: 30px;
+        padding-top: 20px;
     }
 
     .container-menu{
@@ -134,8 +139,6 @@
         height: 100vh;
         top: 0; left: 0;
         transition: all 500ms ease;
-        opacity: 0;
-
     }
 
 
