@@ -12,6 +12,7 @@ import VerProcesos from '../views/VerProcesos.vue'
 import VerProcesosUsu from '../views/VerProcesosUsu.vue'
 import PrimeraFase from '../views/PrimeraFase.vue'
 import SegundaFase from '../views/SegundaFase.vue'
+import TerceraFase from '../views/TerceraFase.vue'
 import VerPrimeraFase from '../views/VerPrimeraFase.vue'
 import VerSegundaFase from '../views/VerSegundaFase.vue'
 import axios from "axios";
@@ -91,6 +92,13 @@ const routes = [
     name: 'SegundaFase',
     component: SegundaFase
   },
+
+  {
+    path: '/TerceraFase/:Id_cta',
+    name: 'TerceraFase',
+    component: TerceraFase
+  },
+
 
   {
     path: '/VerPrimeraFase/:Id_cta',
