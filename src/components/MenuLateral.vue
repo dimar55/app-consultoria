@@ -125,6 +125,10 @@
         border-radius: 30px;
     }
 
+    .icon img{
+        padding-top: 10px;
+    }
+
     .logo_user{
         padding-top: 50px;
     }
