@@ -45,9 +45,8 @@
         }
     },
     methods: {
-        },
+        
         go_MenuUsu(){
-            alert("hola");
             this.show_barraUsu=false;
             this.$router.push({ path: '/MenuUsu' });
         },
@@ -56,6 +55,7 @@
             this.show_barraUsu=false;
             this.$router.push({ path: '/VerProcesosUsu' });
         },
+    },
     } 
 
 

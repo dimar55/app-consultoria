@@ -43,6 +43,17 @@ export default {
                             showConfirmButton: false,
                             timer: 1000,
                         });
+                        let token = result.data.body.token;
+                        axios.post("http://localhost:3000/user/auth/verifyToken", { token })
+                            .then((result) => {
+                                if(result.data.body.decoded.user.Tipo_usu == "Administrador"){
+                                    this.$router.push({ path: '/Menu' });
+                                }else{
+                                    this.$router.push({ path: '/MenuUsu' });
+                                }
+                            }).catch((err) => {
+                                console.log("Error al verificar token: " + err)
+                            });
                         this.$router.push({ path: '/Menu' });
                     } else {
                         Swal.fire({
