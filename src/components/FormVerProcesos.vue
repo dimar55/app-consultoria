@@ -131,11 +131,18 @@ export default {
         },
         verDetalle(Id_cta, fase) {
             let url = "";
-            if (fase == 1) url = "http://localhost:3000/encto/"
-            if (fase == 2) url = "http://localhost:3000/dsrllo/"
+            let enviarFase = "";
+            if (fase == 1) {
+                url = "http://localhost:3000/encto/";
+                enviarFase = "VerPrimeraFase";
+            }
+            if (fase == 2) {
+                url = "http://localhost:3000/dsrllo/";
+                enviarFase = "VerSegundaFase";
+            }
             axios.get(url + Id_cta).then((result) => {
                 if (result.data.success) {
-                    this.$router.push({ name: 'VerPrimeraFase', params: { Id_cta } });  
+                    this.$router.push({ name: enviarFase, params: { Id_cta } });  
                 } else {
                     Swal.fire({
                         icon: "error",

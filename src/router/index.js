@@ -84,7 +84,7 @@ const routes = [
     component: VerPrimeraFase
   },
   {
-    path: '/VerSegundafase',
+    path: '/VerSegundafase/:Id_cta',
     name: 'VerSegundaFase',
     component: VerSegundaFase
   },
