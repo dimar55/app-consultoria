@@ -143,7 +143,7 @@ export default {
                     Plazo_pro_cierre: "",
                     Elemento_pro_cierre: "",
                     Comentario_pro_cierre: "",
-                    Id_cta: 37
+                    Id_cta: this.$route.params.Id_cta
                 },
                 revision: {
                     Definicion_rev: "",

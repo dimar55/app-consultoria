@@ -163,7 +163,7 @@ export default {
                             showConfirmButton: false,
                             timer: 1000,
                         });
-                        if (sessionStorage.getItem("Tipo_usu") == "Administrador") {
+                        if (sessionStorage.getItem("Tipo") == "Administrador") {
                             this.$router.push({ path: '/Menu' });
                         } else {
                             this.$router.push({ path: '/MenuUsu' });
