@@ -214,8 +214,6 @@ export default {
     margin-top: 30px;
     padding: 10px;
     width: 800px;
-    height: 1000px;
-    overflow-y: scroll;
     text-align: center;
     color: white;
     justify-content: center;
@@ -310,5 +308,9 @@ export default {
     margin-right: 10px;
 }
 
+.results{
+    height: 600px;
+    overflow-y: scroll;
+}
 
 </style>
