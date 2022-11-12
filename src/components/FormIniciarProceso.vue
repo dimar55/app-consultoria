@@ -292,12 +292,17 @@ table.Table {
     width: 100%;
     text-align: center;
     border-collapse: collapse;
+   
+    
 }
 
 table.Table td,
 table.Table th {
     border: 2px solid #000000;
-    padding: 15px 10px;
+    padding: 15px 10px; 
+    word-break: break-all;
+    max-width: 250px;
+    
 }
 
 table.Table tbody td {
