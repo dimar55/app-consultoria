@@ -308,5 +308,9 @@ export default {
     margin-right: 10px;
 }
 
+.results{
+    height: 600px;
+    overflow-y: scroll;
+}
 
 </style>
